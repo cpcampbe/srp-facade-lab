@@ -5,7 +5,7 @@ public class HandleDamageTaken {
     public static void reduceHealthCorrectly(RpgPlayer player, int damage)
     {
         int damageToDeal;
-        if (player.calculateInventoryWeight() < (player.getCarryingCapacity())*(0.5))
+        if (Inventory.calculateInventoryWeight(player) < (player.getCarryingCapacity())*(0.5))
         {
             damageToDeal = (int)(0.75*(damage - player.getArmour()));
         }

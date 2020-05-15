@@ -72,32 +72,36 @@ public class RpgPlayer {
 //        return true;
 //    }
 
+    public List<Item> getInventory() {
+        return inventory;
+    }
+
     public void addToInventory(Item item)
     {
         inventory.add(item);
     }
 
-    public void calculateStats() {
-        for (Item i: inventory) {
-            armour += i.getArmour();
-        }
-    }
-
-    public boolean checkIfItemExistsInInventory(Item item) {
-        for (Item i: inventory) {
-            if (i.getId() == item.getId())
-                return true;
-        }
-        return false;
-    }
-
-    public int calculateInventoryWeight() {
-        int sum=0;
-        for (Item i: inventory) {
-            sum += i.getWeight();
-        }
-        return sum;
-    }
+//    public void calculateStats() {
+//        for (Item i: inventory) {
+//            armour += i.getArmour();
+//        }
+//    }
+//
+//    public boolean checkIfItemExistsInInventory(Item item) {
+//        for (Item i: inventory) {
+//            if (i.getId() == item.getId())
+//                return true;
+//        }
+//        return false;
+//    }
+//
+//    public int calculateInventoryWeight() {
+//        int sum=0;
+//        for (Item i: inventory) {
+//            sum += i.getWeight();
+//        }
+//        return sum;
+//    }
 //
 //    public void takeDamage(int damage) {
 //        if (damage < armour) {
@@ -133,7 +137,7 @@ public class RpgPlayer {
         return armour;
     }
 
-    private void setArmour(int armour) {
+    public void setArmour(int armour) {
         this.armour = armour;
     }
 

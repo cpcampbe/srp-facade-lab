@@ -6,23 +6,24 @@ public class RpgPlayerFacade {
 
 
     public static void useItem(RpgPlayer player, Item item) {
-        if (item.getName().equals("Stink Bomb"))
-        {
-            List<IEnemy> enemies = player.getGameEngine().getEnemiesNear(player);
-
-            for (IEnemy enemy: enemies){
-                enemy.takeDamage(100);
-            }
-        }
+        HandleItems.useItemNow(player, item);
+//        if (item.getName().equals("Stink Bomb"))
+//        {
+//            List<IEnemy> enemies = player.getGameEngine().getEnemiesNear(player);
+//
+//            for (IEnemy enemy: enemies){
+//                enemy.takeDamage(100);
+//            }
+//        }
     }
 
     public static boolean pickUpItem(RpgPlayer player, Item item) {
 
-        int weight = player.calculateInventoryWeight();
-        if (weight + item.getWeight() > player.getCarryingCapacity())
+//        int weight = Inventory.calculateInventoryWeight(player);
+        if (HandleItems.isTooHeavy(player, item))
             return false;
 
-        if (item.isUnique() && player.checkIfItemExistsInInventory(item))
+        if (HandleItems.noMoreUniques(player, item))
             return false;
 
         // Don't pick up items that give health, just consume them.
@@ -43,7 +44,7 @@ public class RpgPlayerFacade {
 
         player.addToInventory(item);
 
-        player.calculateStats();
+        Inventory.calculateStats(player);
 
         return true;
     }
